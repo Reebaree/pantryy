@@ -21,15 +21,25 @@ export default function Home() {
         name: doc.id,
         ...doc.data(),
       })
-  })
-  setInventory(inventoryList)
-}
+    })
+    setInventory(inventoryList)
+  }
 
-use
+  useEffect(()=>{
+    updateInventory()
+  }, [])
+
   return (
     <Box>
       <Typography variant="h1"> Inventory Management </Typography>
+      {
+        inventory.forEach((item)=>{
+          return(<>
+          {item.name}
+          {item.count}
+          </>)
+        })
+      }
     </Box>
-    
-  );
+  )
 }
